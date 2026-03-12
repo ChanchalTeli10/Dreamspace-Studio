@@ -43,12 +43,12 @@ mongoose
 
 const __dirname1 = path.resolve();
 
-app.use(express.static(path.join(__dirname1, "../frontend/dist")));
+// Serve React build
+app.use(express.static(path.join(__dirname1, "dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname1, "../frontend/dist/index.html"));
+  res.sendFile(path.join(__dirname1, "dist", "index.html"));
 });
-
 /* ===============================
    START SERVER
 ================================ */
