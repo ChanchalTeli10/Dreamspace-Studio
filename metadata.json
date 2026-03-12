@@ -1,0 +1,7 @@
+{
+  "name": "DreamSpace AI Designer",
+  "description": "An advanced interior design application that combines manual 2D layout planning with AI-powered realistic 3D room generation and furniture placement analysis.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
