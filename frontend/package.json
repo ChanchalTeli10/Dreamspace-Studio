@@ -1,8 +1,10 @@
-
 {
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
+  },
+  "dependencies": {
+    "dreamspace-studio": "file:.."
   }
 }

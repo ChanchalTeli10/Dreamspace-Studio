@@ -15,7 +15,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL = 'http://localhost:5000/api/auth';
+  const API_URL = '/api/auth';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
