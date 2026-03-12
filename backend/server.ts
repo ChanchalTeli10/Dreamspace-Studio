@@ -29,10 +29,10 @@ mongoose.connect(MONGODB_URI)
 const __dirname1 = path.resolve();
 
 /* Serve React build */
-app.use(express.static(path.join(process.cwd(), "frontend/dist")));
+app.use(express.static(path.join(__dirname1, "../../frontend/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "frontend/dist/index.html"));
+  res.sendFile(path.join(__dirname1, "../../frontend/dist/index.html"));
 });
 /* ===== START SERVER ===== */
 app.listen(PORT, () => {
