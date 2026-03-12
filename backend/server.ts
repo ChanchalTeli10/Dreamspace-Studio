@@ -24,13 +24,15 @@ mongoose.connect(process.env.MONGODB_URI as string)
 
 /* ===== SERVE FRONTEND ===== */
 
-const frontendPath = path.join(process.cwd(), "frontend", "dist");
+const frontendPath = path.resolve(__dirname, "../../frontend/dist");
 
 app.use(express.static(frontendPath));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
+
+/* Start server */
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
