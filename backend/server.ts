@@ -6,53 +6,35 @@ import path from "path";
 
 import authRoutes from "./routes/authRoutes";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// MongoDB connection
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/dreamspace";
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// API Routes
+/* ===== API ROUTES FIRST ===== */
 app.use("/api/auth", authRoutes);
 
-// MongoDB Connection
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => {
-    console.log("-------------------------------------------");
-    console.log("✅ DATABASE: MongoDB Connected Successfully");
-    console.log("-------------------------------------------");
-  })
-  .catch((err) => {
-    console.error("-------------------------------------------");
-    console.error("❌ DATABASE ERROR:", err);
-    console.error("-------------------------------------------");
-  });
+/* ===== CONNECT DATABASE ===== */
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
-/* ===============================
-   SERVE REACT FRONTEND (PRODUCTION)
-================================ */
-
+/* ===== SERVE REACT BUILD ===== */
 const __dirname1 = path.resolve();
 
-// Serve React build
 app.use(express.static(path.join(__dirname1, "dist")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname1, "dist", "index.html"));
 });
-/* ===============================
-   START SERVER
-================================ */
 
+/* ===== START SERVER ===== */
 app.listen(PORT, () => {
-  console.log(`🚀 BACKEND: Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
