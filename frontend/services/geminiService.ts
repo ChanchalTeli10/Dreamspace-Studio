@@ -9,7 +9,7 @@ export const analyzeRoomLayout = async (imageData: string, measurements: RoomMea
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-pro-preview',
+      model: "gemini-1.5-pro",
       contents: {
         parts: [
           { 
