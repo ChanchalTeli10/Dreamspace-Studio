@@ -22,12 +22,13 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 /* MongoDB */
-mongoose.connect(process.env.MONGODB_URI as string)
+console.log("Mongo URI:", process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI as string)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
 /* Serve frontend */
-const frontendPath = path.join(__dirname, "../../frontend/dist");
+const frontendPath = path.join(__dirname, "../frontend/dist");
 
 app.use(express.static(frontendPath));
 
